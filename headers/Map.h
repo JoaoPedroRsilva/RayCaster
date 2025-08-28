@@ -6,11 +6,14 @@ class Map{
 
     Map( const std::string& filename );
 
-    int getCell( int x, int y ) const;
+    int getCell( int y, int x ) const;
 
     private:
 
-    std::vector<std::vector<int>> mapStorage;
+    std::vector<std::vector<int>> grid;
+    int mapWidth;
+    int mapHeight;
+    
 
     void mapLoader( const std::string& filename );
 
