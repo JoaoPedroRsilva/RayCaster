@@ -1,12 +1,12 @@
-#include "map.h"
+#include "Map.h"
 #include <fstream> 
 #include <iostream>
 
 Map::Map( const std::string& filename ){
-    mapLoader( filename );
+    MapLoader( filename );
 }
 
-Map::mapLoader( const std::string& filename ){
+Map::MapLoader( const std::string& filename ){
     std::ifstream file( filename );
 
     if( !file.is_open() ){
@@ -25,6 +25,16 @@ Map::mapLoader( const std::string& filename ){
     for( int i = 0; i < mapHeight; i++ ){
         for( int j = 0; j < mapWidth; j++ ){
             file >> grid[i][j];
+        }
+    }
+}
+
+void Map::Draw( olc::PixelGameEngine* pge ){
+    for( int y = 0; y < mapHeight; y++ ){
+        for( int x = 0; x < mapWidth; x++ ){
+            if( grid[y][x] == 1 ){
+                pge->FillRect(x * 4, y * 4, 4, 4, olc::WHITE );
+            }
         }
     }
 }

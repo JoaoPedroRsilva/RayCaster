@@ -1,6 +1,11 @@
+#include "olcPixelGameEngine.h"
+#include "Map.h"
 
 int main( int agrc, char* argv[] ){
-
+    Game test;
+    if( test.Construct( 256, 240, 4, 4 ) ){
+        test.Start();
+    } 
 
     return 0;
 }

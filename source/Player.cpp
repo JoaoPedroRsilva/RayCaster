@@ -12,4 +12,4 @@ class Player : public{
     void move( float speedX, float speedY ){
         
     }
-}
+};
