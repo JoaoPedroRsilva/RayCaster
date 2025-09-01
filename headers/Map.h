@@ -1,3 +1,5 @@
+#ifndef MAP_H
+#define MAP_H
 #include <vector>
 #include <string>
 
@@ -6,16 +8,16 @@ namespace olc {
 }
 
 class Map{
-    public:
-
+public:
     Map( const std::string& filename );
     int getCell( int y, int x ) const;
     void mapLoader( const std::string& filename );
     void draw(olc::PixelGameEngine* pge );
 
-    private:
-
+private:
     std::vector<std::vector<int>> grid;
     int mapWidth;
     int mapHeight;
 };
+
+#endif

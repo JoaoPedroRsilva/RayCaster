@@ -1,4 +1,5 @@
-#include "olcPixelGameEngine.h"
+#ifndef GAME_H
+#define GAME_H
 #include "Map.h"
 
 class Game : public olc::PixelGameEngine {
@@ -12,3 +13,4 @@ public:
     bool OnUserUpdate(float fElapsedTime);
 };
 
+#endif 

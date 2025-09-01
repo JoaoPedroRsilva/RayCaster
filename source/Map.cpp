@@ -1,6 +1,7 @@
 #include "Map.h"
 #include <fstream> 
 #include <iostream>
+#include "olcPixelGameEngine.h"
 
 Map::Map( const std::string& filename ){
     mapLoader( filename );
@@ -33,7 +34,7 @@ void Map::draw( olc::PixelGameEngine* pge ){
     for( int y = 0; y < mapHeight; y++ ){
         for( int x = 0; x < mapWidth; x++ ){
             if( grid[y][x] == 1 ){
-                pge->FillRect(x * 4, y * 4, 4, 4, olc::WHITE );
+                pge->FillRect(x * 6, y * 64, 4, 4, olc::WHITE );
             }
         }
     }

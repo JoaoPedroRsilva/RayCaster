@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build RayCaster",
+            "type": "cppbuild",
+            "command": "C:\\Users\\Joao\\Documents\\w64devkit\\bin\\g++.exe",
+            "args": [
+                "-g",
+                "-std=c++17",
+                "-I${workspaceFolder}/headers",
+                "${workspaceFolder}/source/Game.cpp",
+                "${workspaceFolder}/source/Map.cpp",
+                "-o",
+                "${workspaceFolder}/raycaster.exe",
+                "-mwindows",
+                "-lgdi32",
+                "-luser32",
+                "-lopengl32",
+                "-lgdiplus",
+                "-ldwmapi",
+                "-lshell32",
+                "-lshlwapi"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Builds the RayCaster project."
+        }
+    ]
+}
