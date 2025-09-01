@@ -3,10 +3,10 @@
 #include <iostream>
 
 Map::Map( const std::string& filename ){
-    MapLoader( filename );
+    mapLoader( filename );
 }
 
-Map::MapLoader( const std::string& filename ){
+void Map::mapLoader( const std::string& filename ){
     std::ifstream file( filename );
 
     if( !file.is_open() ){
@@ -29,7 +29,7 @@ Map::MapLoader( const std::string& filename ){
     }
 }
 
-void Map::Draw( olc::PixelGameEngine* pge ){
+void Map::draw( olc::PixelGameEngine* pge ){
     for( int y = 0; y < mapHeight; y++ ){
         for( int x = 0; x < mapWidth; x++ ){
             if( grid[y][x] == 1 ){

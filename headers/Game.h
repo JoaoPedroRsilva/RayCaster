@@ -8,8 +8,7 @@ private:
 public:
     Game(); 
 
-    bool OnUserCreate() override;
-    bool OnUserUpdate(float fElapsedTime) override;
+    bool OnUserCreate();
+    bool OnUserUpdate(float fElapsedTime);
 };
 
-#endif 

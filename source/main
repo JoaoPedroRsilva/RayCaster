@@ -1,5 +1,6 @@
 #include "olcPixelGameEngine.h"
 #include "Map.h"
+#include "Game.h"
 
 int main( int agrc, char* argv[] ){
     Game test;
