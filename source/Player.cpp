@@ -1,15 +1,16 @@
+#include "Player.h"
+#define PI 3,1415926535
 
+Player::Player( float positionX, float positionY ){
+    this->positionX = positionX;
+    this->positionY = positionY;
+    this->angle = 0;
+}
 
-class Player : public{
-    private:
-    Player() {
-        float x;
-        float y;
-        Ray line;
-    }
+void Player::move( float movement ){
+    
+}
 
-    public:
-    void move( float speedX, float speedY ){
-        
-    }
-};
+void Player::turn( float turning ){
+
+}

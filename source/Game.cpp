@@ -2,8 +2,9 @@
 #include "olcPixelGameEngine.h"
 #include "Game.h"
 #include "Map.h"
+#include "Player.h"
 
-Game::Game() : stage("assets/Map.txt") {
+Game::Game() : stage("assets/Map.txt"), dummy( 10, 10 ) {
     sAppName = "RayCaster";
 }
 
@@ -14,6 +15,19 @@ bool Game::OnUserCreate(){
 bool Game::OnUserUpdate( float fElapsedTime ){
     Clear( olc::DARK_BLUE );
     stage.draw( this );
+    if (GetKey(olc::Key::W).bHeld) {
+
+    }
+
+    if (GetKey(olc::Key::S).bHeld) {
+    }
+
+    if (GetKey(olc::Key::A).bHeld) {
+        
+    }
+    
+    if (GetKey(olc::Key::D).bHeld) {
+    }
     return true;
 }
 
