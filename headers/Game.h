@@ -6,12 +6,12 @@
 class Game : public olc::PixelGameEngine {
 private:
     Map stage;
-    Player dummy;
+    Player myPlayer;
 public:
     Game(); 
 
     bool OnUserCreate();
-    bool OnUserUpdate(float fElapsedTime);
+    bool OnUserUpdate( float fElapsedTime );
 };
 
 #endif 

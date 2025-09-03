@@ -4,7 +4,7 @@
 #include "Map.h"
 #include "Player.h"
 
-Game::Game() : stage("assets/Map.txt"), dummy( 10, 10 ) {
+Game::Game() : stage("assets/Map.txt"), myPlayer( 100.0f, 100.0f ) {
     sAppName = "RayCaster";
 }
 
@@ -15,19 +15,10 @@ bool Game::OnUserCreate(){
 bool Game::OnUserUpdate( float fElapsedTime ){
     Clear( olc::DARK_BLUE );
     stage.draw( this );
-    if (GetKey(olc::Key::W).bHeld) {
+    myPlayer.handleMovement( fElapsedTime, this );
+    FillCircle( myPlayer.getPositionX(), myPlayer.getPositionY(), 7, olc::RED );
 
-    }
-
-    if (GetKey(olc::Key::S).bHeld) {
-    }
-
-    if (GetKey(olc::Key::A).bHeld) {
-        
-    }
     
-    if (GetKey(olc::Key::D).bHeld) {
-    }
     return true;
 }
 

@@ -1,6 +1,10 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+namespace olc {
+    class PixelGameEngine;
+}
+
 class Player{
 private:
     float positionX;
@@ -9,8 +13,9 @@ private:
 
 public:
     Player( float positionX, float positionY );
-    void move( float moving );
-    void turn( float turning );
+    void handleMovement( float fElapsedTime, olc::PixelGameEngine* pge );
+    float getPositionX() const;
+    float getPositionY() const;
 };
 
 #endif
