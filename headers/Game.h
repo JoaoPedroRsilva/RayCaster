@@ -7,6 +7,8 @@ class Game : public olc::PixelGameEngine {
 private:
     Map stage;
     Player myPlayer;
+    const float TILE_WIDTH = 64.0f;
+    const float TILE_HEIGHT = 60.0f;
 public:
     Game(); 
 
