@@ -28,7 +28,7 @@ bool Game::OnUserUpdate( float fElapsedTime ){
     DrawString(10, 10, debug, olc::WHITE);
 
 
-    FillCircle( myPlayer.getPositionX(), myPlayer.getPositionY(), 7, olc::RED );
+    FillCircle( myPlayer.getPositionX(), myPlayer.getPositionY(), 7, olc::YELLOW );
 
     return true;
 }

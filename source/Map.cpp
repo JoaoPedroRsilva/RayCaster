@@ -34,7 +34,7 @@ void Map::draw( olc::PixelGameEngine* pge, float tileWidth, float tileHeight ){
     for( int y = 0; y < mapHeight; y++ ){
         for( int x = 0; x < mapWidth; x++ ){
             if( grid[y][x] == 1 ){
-                pge->FillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight, olc::GREY );
+                pge->FillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight, olc::VERY_DARK_CYAN );
             }
         }
     }
