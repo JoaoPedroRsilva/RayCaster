@@ -30,17 +30,17 @@ void Map::mapLoader( const std::string& filename ){
     }
 }
 
-void Map::draw( olc::PixelGameEngine* pge ){
+void Map::draw( olc::PixelGameEngine* pge, float tileWidth, float tileHeight ){
     for( int y = 0; y < mapHeight; y++ ){
         for( int x = 0; x < mapWidth; x++ ){
             if( grid[y][x] == 1 ){
-                pge->FillRect(x * 64, y * 60, 64, 60, olc::GREY );
+                pge->FillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight, olc::GREY );
             }
         }
     }
 }
 
-int Map::getCell( int y, int x ) const {
+int Map::getCell( int x, int y ) const {
     if(  x < 0 || y < 0 || y >= mapHeight || x >= mapWidth )  return -1;
     
     return grid[y][x];

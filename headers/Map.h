@@ -10,9 +10,9 @@ namespace olc {
 class Map{
 public:
     Map( const std::string& filename );
-    int getCell( int y, int x ) const;
+    int getCell( int x, int y ) const;
     void mapLoader( const std::string& filename );
-    void draw( olc::PixelGameEngine* pge );
+    void draw( olc::PixelGameEngine* pge, float tileWidth, float tileHeight );
 
 private:
     std::vector<std::vector<int>> grid;
