@@ -1,6 +1,10 @@
 #include "cmath"
 #include "Ray.h"
 
+Ray::Ray( Map* map ){
+    this->map = map;
+}
+
 void Ray::wallCheck( float playerX, float playerY, float angle, float tileWidth, float tileHeight ){
     float cosAngle = cos( angle );
     float sinAngle = sin( angle );
@@ -37,11 +41,16 @@ void Ray::wallCheck( float playerX, float playerY, float angle, float tileWidth,
     vertical.y = fabs( hip ) * sinAngle;
 
     if( firstDistanceToGridX < firstDistanceToGridY ){
-        // CHECK IF HORIZONTAL IS WALL
-        // CHECK IF VERTICAL IS WALL
+        map->getCell( horizontal.x, horizontal.y );
+        map->getCell( vertical.x, vertical.y );
+        while( )
     }else{
-        // CHECK IF VERTICAL IS WALL
-        // CHECK IF HORIZONTAL IS WALL
+        map->getCell( vertical.x, vertical.y );
+        map->getCell( horizontal.x, horizontal.y );
     }
+
+    
+
+
 
 }
