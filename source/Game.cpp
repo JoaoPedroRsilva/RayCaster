@@ -3,12 +3,13 @@
 #include "Game.h"
 #include "Map.h"
 #include "Player.h"
+#include "Ray.h"
 
 Game::Game() : 
-stage("../assets/Map.txt"), 
+stage("assets/Map.txt"), 
 myPlayer( 100.0f, 100.0f, &stage ), 
-TILE_WIDTH(64.0f),
-TILE_HEIGHT(60.0f)
+TILE_WIDTH( 64.0f ),
+TILE_HEIGHT( 60.0f )
 {
     sAppName = "RayCaster";
 
@@ -22,10 +23,15 @@ bool Game::OnUserUpdate( float fElapsedTime ){
     Clear( olc::DARK_BLUE );
     stage.draw( this, TILE_WIDTH, TILE_HEIGHT );
     myPlayer.handleMovement( fElapsedTime, this, TILE_WIDTH, TILE_HEIGHT );
-    // DEBUG POSITION
-    std::string debug = "X: " + std::to_string((int)myPlayer.getPositionX()) + 
-                       " Y: " + std::to_string((int)myPlayer.getPositionY());
+    wallCheck collision = myPlayer.castRay( TILE_WIDTH, TILE_HEIGHT );
+    DrawLine( myPlayer.getPositionX(), myPlayer.getPositionY(), collision.x, collision.y, olc::YELLOW );
+    // DEBUG 
+    std::string playerAngle = "Angle: " + std::to_string( myPlayer.getAngle() );
+    DrawString( 10, 20, playerAngle, olc::WHITE ); 
+    std::string debug = "X: " + std::to_string( ( int )myPlayer.getPositionX() ) + 
+                       " Y: " + std::to_string( ( int )myPlayer.getPositionY() );
     DrawString(10, 10, debug, olc::WHITE);
+
 
 
     FillCircle( myPlayer.getPositionX(), myPlayer.getPositionY(), 7, olc::YELLOW );

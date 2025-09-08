@@ -2,13 +2,18 @@
 #define RAY_H
 #include "Map.h"
 
+typedef struct{
+    float x;
+    float y;
+}wallCheck;
+
 class Ray{
 private:
     Map* map;
 
 public:
     Ray( Map* map );
-    void wallCheck( float playerX, float playerY, float angle, float tileWidth, float tileHeight );
+    wallCheck rayCollisionCheck( float playerX, float playerY, float angle, float tileWidth, float tileHeight );
 };
 
 

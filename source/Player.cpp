@@ -3,7 +3,7 @@
 #include "olcPixelGameEngine.h"
 #define PI 3,1415926535
 
-Player::Player( float positionX, float positionY, Map* map ){
+Player::Player( float positionX, float positionY, Map* map ): ray( map ){
     this->positionX = positionX;
     this->positionY = positionY;
     this->angle = 0.0f;
@@ -45,4 +45,12 @@ float Player::getPositionX() const{
 
 float Player::getPositionY() const{
     return positionY;
+}
+
+float Player::getAngle() const{
+    return angle;
+}
+
+wallCheck Player::castRay( float tileWidth, float tileHeight ){
+    return ray.rayCollisionCheck( positionX, positionY, angle, tileWidth, tileHeight );
 }
