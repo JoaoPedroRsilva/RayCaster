@@ -6,7 +6,7 @@
 #include "Ray.h"
 
 Game::Game() : 
-stage("assets/Map.txt"), 
+stage("../assets/Map.txt"), 
 myPlayer( 100.0f, 100.0f, &stage ), 
 TILE_WIDTH( 64.0f ),
 TILE_HEIGHT( 60.0f )

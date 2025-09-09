@@ -8,87 +8,51 @@ Ray::Ray( Map* map ){
 wallCheck Ray::rayCollisionCheck( float playerX, float playerY, float angle, float tileWidth, float tileHeight ){
     float cosAngle = cos( angle );
     float sinAngle = sin( angle );
-    float firstDistanceToGridX = 0;
-    float firstDistanceToGridY = 0;
+    wallCheck rayStart;
+    rayStart.x = playerX;
+    rayStart.y = playerY;
+    wallCheck DistanceToGrid;
+    DistanceToGrid.x = 0;
+    DistanceToGrid.y = 0;
+    float hipX = 0;
+    float hipY = 0;
 
-    if( cosAngle > 0 ){
-        firstDistanceToGridX = tileWidth - ( fmodf( playerX, tileWidth ) );
-    }else{
-        firstDistanceToGridX = fmodf( playerX, tileWidth );
-    }
-
-    if( sinAngle > 0 ){
-       firstDistanceToGridY = tileHeight - ( fmodf( playerY, tileHeight ) );
-    }else{
-        firstDistanceToGridY = fmodf( playerY, tileHeight );
-    }
-    
-    typedef struct{
-        float x;
-        float y;
-    }firstCoordinate;
-
-    firstCoordinate horizontal;
-    firstCoordinate vertical;
-    float firstHipVert = 0;
-    float firstHipHoriz = 0;
-
-    firstHipVert = firstDistanceToGridX / cosAngle;
-    horizontal.x = fabs( firstHipVert ) * cosAngle;
-    horizontal.y = fabs( firstHipVert ) * sinAngle;
-
-    firstHipHoriz = firstDistanceToGridY / sinAngle;
-    vertical.x = fabs( firstHipHoriz ) * cosAngle;
-    vertical.y = fabs( firstHipHoriz ) * sinAngle;
-
-    wallCheck currentRayPosHorizontal;
-    wallCheck currentRayPosVertical;
-    wallCheck wallHit;
-
-    currentRayPosHorizontal.x = playerX + horizontal.x;
-    currentRayPosHorizontal.y = playerY + horizontal.y;
-    
-    currentRayPosVertical.x = playerX + vertical.x;
-    currentRayPosVertical.y = playerY + vertical.y;
-
-    int tileIncrementIndex = 1;
-
-    float hipX = tileWidth / cosAngle;
-    float hipY = tileHeight / sinAngle;
-
-    if( firstDistanceToGridX < firstDistanceToGridY ){
-        if( map->getCell( ( int )( currentRayPosHorizontal.x / tileWidth ),( int )( currentRayPosHorizontal.y / tileHeight ) ) == 1 ){
-            return currentRayPosHorizontal;
-        }else if( map->getCell( ( int )( currentRayPosVertical.x / tileWidth ), ( int )( currentRayPosVertical.y/ tileHeight ) ) == 1 ){
-            return currentRayPosVertical;
+    while( map->getCell( ( int )( rayStart.x / tileWidth ), ( int )( rayStart.y / tileHeight ) ) != 1 ){
+        if( cosAngle > 0 ){
+            DistanceToGrid.x = tileWidth - ( fmodf( rayStart.x, tileWidth ) );
+        } else if( cosAngle < 0 ){
+            DistanceToGrid.x = fmodf( rayStart.x, tileWidth );
+        } else if( cosAngle == 0  && sinAngle > 0 ){
+            rayStart.y += tileHeight - ( fmodf( rayStart.y, tileHeight ) );
+            continue;
+        } else {
+            rayStart.y -= fmodf( rayStart.y, tileHeight );
+            continue;
         }
-        while( true ){
-            wallHit.x = currentRayPosHorizontal.x + ( fabs( hipX ) * tileIncrementIndex ) * cosAngle;
-            wallHit.y = currentRayPosHorizontal.y + ( fabs( hipX ) * tileIncrementIndex ) * sinAngle;
-            if( map->getCell( ( int )( wallHit.x / tileWidth ), ( int )( wallHit.y / tileHeight ) ) == 1 ) break;
-            wallHit.x = currentRayPosVertical.x + ( fabs( hipY ) * tileIncrementIndex ) * cosAngle;
-            wallHit.y = currentRayPosVertical.y + ( fabs( hipY ) * tileIncrementIndex ) * sinAngle;
-            if( map->getCell( ( int )( wallHit.x / tileWidth ), ( int )( wallHit.y / tileHeight ) ) == 1 ) break;
-            tileIncrementIndex++;
+        if( sinAngle > 0 ){
+            DistanceToGrid.y = tileHeight - ( fmodf( rayStart.y, tileHeight ) );
+        } else if( sinAngle < 0 ){
+            DistanceToGrid.y = fmodf( rayStart.y, tileHeight );
+        } else if( sinAngle == 0 && cosAngle > 0 ){
+            rayStart.x += tileWidth - ( fmodf( rayStart.x, tileWidth ) );
+            continue;
+        } else {
+            rayStart.x -= fmodf( rayStart.x, tileWidth );
+            continue;
         }
-    }else{
-        if( map->getCell( ( int )( currentRayPosVertical.x / tileWidth ), ( int )( currentRayPosVertical.y/ tileHeight ) ) == 1 ){
-            return currentRayPosVertical;
-        }else if( map->getCell( ( int )( currentRayPosHorizontal.x / tileWidth ),( int )( currentRayPosHorizontal.y / tileHeight ) ) == 1 ){
-            return currentRayPosHorizontal;
-        }
-        while( true ){
-            wallHit.x = currentRayPosVertical.x + ( fabs( hipY ) * tileIncrementIndex ) * cosAngle;
-            wallHit.y = currentRayPosVertical.y + ( fabs( hipY ) * tileIncrementIndex ) * sinAngle;
-            if( map->getCell( ( int )( wallHit.x / tileWidth ), ( int )( wallHit.y / tileHeight ) ) == 1 ) break;
-            wallHit.x = currentRayPosHorizontal.x + ( fabs( hipX ) * tileIncrementIndex ) * cosAngle;
-            wallHit.y = currentRayPosHorizontal.y + ( fabs( hipX ) * tileIncrementIndex ) * sinAngle;
-            if( map->getCell( ( int )( wallHit.x / tileWidth ), ( int )( wallHit.y / tileHeight ) ) == 1 ) break;
-            tileIncrementIndex++;
+
+        if( DistanceToGrid.x < DistanceToGrid.y ){
+            hipX = DistanceToGrid.x / cosAngle;
+            rayStart.x += fabs( hipX ) * cosAngle;
+            rayStart.y += fabs( hipX ) * sinAngle;
+        } else {
+            hipY = DistanceToGrid.y / sinAngle;
+            rayStart.y += fabs( hipY ) * sinAngle;
+            rayStart.x += fabs( hipY ) * cosAngle;
         }
     }
 
-    return wallHit;
+    return rayStart;
 }
 
 
