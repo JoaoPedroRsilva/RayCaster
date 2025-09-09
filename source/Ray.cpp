@@ -41,14 +41,14 @@ wallCheck Ray::rayCollisionCheck( float playerX, float playerY, float angle, flo
             continue;
         }
 
-        if( DistanceToGrid.x < DistanceToGrid.y ){
-            hipX = DistanceToGrid.x / cosAngle;
-            rayStart.x += fabs( hipX ) * cosAngle;
-            rayStart.y += fabs( hipX ) * sinAngle;
+        hipX = fabs( DistanceToGrid.x / cosAngle );
+        hipY = fabs( DistanceToGrid.y / sinAngle );
+        if( hipX < hipY ){ 
+            rayStart.x += hipX * cosAngle;
+            rayStart.y += hipX * sinAngle;
         } else {
-            hipY = DistanceToGrid.y / sinAngle;
-            rayStart.y += fabs( hipY ) * sinAngle;
-            rayStart.x += fabs( hipY ) * cosAngle;
+            rayStart.y += hipY * sinAngle;
+            rayStart.x += hipY * cosAngle;
         }
     }
 

@@ -31,6 +31,13 @@ bool Game::OnUserUpdate( float fElapsedTime ){
     std::string debug = "X: " + std::to_string( ( int )myPlayer.getPositionX() ) + 
                        " Y: " + std::to_string( ( int )myPlayer.getPositionY() );
     DrawString(10, 10, debug, olc::WHITE);
+    std::string collisionInfo = "Hit: (" + std::to_string((int)collision.x) + ", " + std::to_string((int)collision.y) + ")";
+    DrawString(10, 50, collisionInfo, olc::WHITE);
+    std::string cosInfo = "cos: " + std::to_string( cos(myPlayer.getAngle()) );
+    DrawString(10, 30, cosInfo, olc::WHITE);
+
+    std::string sinInfo = "sin: " + std::to_string( sin(myPlayer.getAngle()) );
+    DrawString(10, 40, sinInfo, olc::WHITE);
 
 
 
