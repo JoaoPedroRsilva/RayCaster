@@ -11,7 +11,7 @@ Player::Player( float positionX, float positionY, Map* map ): ray( map ){
 }
 
 void Player::handleMovement( float fElapsedTime, olc::PixelGameEngine* pge, float tileWidth, float tileHeight ){
-    float distance = 25;
+    float distance = 30;
     float movingDistanceX = 0.0f;
     float movingDistanceY = 0.0f;
 
@@ -51,6 +51,6 @@ float Player::getAngle() const{
     return angle;
 }
 
-wallCheck Player::castRay( float tileWidth, float tileHeight ){
-    return ray.rayCollisionCheck( positionX, positionY, angle, tileWidth, tileHeight );
+wallCheck Player::castRay( float tileWidth, float tileHeight, float loopAngle ){
+    return ray.rayCollisionCheck( positionX, positionY, loopAngle, tileWidth, tileHeight );
 }

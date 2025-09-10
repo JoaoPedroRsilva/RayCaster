@@ -22,7 +22,7 @@ public:
     float getPositionX() const;
     float getPositionY() const;
     float getAngle() const;
-    wallCheck castRay( float tileWidth, float tileHeight );
+    wallCheck castRay( float tileWidth, float tileHeight, float loopAngle );
 };
 
 #endif
