@@ -9,6 +9,8 @@ private:
     Player myPlayer;
     const float TILE_WIDTH;
     const float TILE_HEIGHT;
+    const float FOV;
+    bool visionSwitch;
 public:
     Game(); 
 

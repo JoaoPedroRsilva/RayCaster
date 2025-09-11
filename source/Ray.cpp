@@ -66,6 +66,7 @@ wallCheck Ray::rayCollisionCheck( float playerX, float playerY, float angle, flo
     wallCheck collision;
     collision.x = playerX + cosAngle * finalRayDistance;
     collision.y = playerY + sinAngle * finalRayDistance;
+    collision.rayDistance = finalRayDistance;
     
     return collision;
 }

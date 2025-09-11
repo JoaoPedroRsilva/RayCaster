@@ -5,6 +5,7 @@
 typedef struct{
     float x;
     float y;
+    float rayDistance;
 }wallCheck;
 
 class Ray{

@@ -11,7 +11,7 @@ Player::Player( float positionX, float positionY, Map* map ): ray( map ){
 }
 
 void Player::handleMovement( float fElapsedTime, olc::PixelGameEngine* pge, float tileWidth, float tileHeight ){
-    float distance = 30;
+    float distance = 60;
     float movingDistanceX = 0.0f;
     float movingDistanceY = 0.0f;
 
