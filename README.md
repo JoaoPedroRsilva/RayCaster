@@ -8,11 +8,11 @@ A engine project 2D/3D made with the *olc::PixelGameEngine* that utilises the **
 
 * 2D View
 
-![alt text](2D.gif)
+![alt text](2D-1.gif)
 
 * 3D View
 
-![alt text](gif.gif)
+![alt text](gif-1.gif)
 
 ---
 
