@@ -1,12 +1,11 @@
 #define OLC_PGE_APPLICATION
-#include "olcPixelGameEngine.h"
-#include "Game.h"
-#include "Map.h"
-#include "Player.h"
-#include "Ray.h"
-
-Game::Game() : 
-stage("../assets/Map.txt"), 
+#include "../olcPixelGameEngine.h"
+#include "game.h"
+#include "../map/map.h"
+#include "../player/player.h"
+#include "../ray/ray.h"
+Game::Game() :
+stage("../assets/map.txt"),
 myPlayer( 100.0f, 100.0f, &stage ), 
 TILE_WIDTH( 64.0f ),
 TILE_HEIGHT( 60.0f ),

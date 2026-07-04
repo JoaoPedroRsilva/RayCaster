@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
-#include "Map.h"
-#include "Player.h"
+#include "../map/map.h"
+#include "../player/player.h"
 
 class Game : public olc::PixelGameEngine {
 private:
@@ -18,4 +18,4 @@ public:
     bool OnUserUpdate( float fElapsedTime );
 };
 
-#endif 
+#endif

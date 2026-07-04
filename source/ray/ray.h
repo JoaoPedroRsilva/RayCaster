@@ -1,6 +1,6 @@
 #ifndef RAY_H
 #define RAY_H
-#include "Map.h"
+#include "../map/map.h"
 
 typedef struct{
     float x;

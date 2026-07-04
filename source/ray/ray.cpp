@@ -1,5 +1,5 @@
-#include "cmath"
-#include "Ray.h"
+#include <cmath>
+#include "ray.h"
 #include <limits>
 
 Ray::Ray( Map* map ){

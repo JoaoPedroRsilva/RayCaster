@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-#include "Map.h"
-#include "Ray.h"
+#include "../map/map.h"
+#include "../ray/ray.h"
 
 namespace olc {
     class PixelGameEngine;

@@ -1,6 +1,6 @@
-#include "cmath"
-#include "Player.h"
-#include "olcPixelGameEngine.h"
+#include <cmath>
+#include "player.h"
+#include "../olcPixelGameEngine.h"
 #define PI 3,1415926535
 
 Player::Player( float positionX, float positionY, Map* map ): ray( map ){

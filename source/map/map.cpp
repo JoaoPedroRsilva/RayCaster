@@ -1,7 +1,7 @@
-#include "Map.h"
+#include "map.h"
 #include <fstream> 
 #include <iostream>
-#include "olcPixelGameEngine.h"
+#include "../olcPixelGameEngine.h"
 
 Map::Map( const std::string& filename ){
     mapLoader( filename );
